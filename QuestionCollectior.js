@@ -44,6 +44,8 @@ function locateAnswerElement(arg1) {
 
 // Define a variable to accumulate text from all pages
 let accumulatedText = '';
+let currPage = 0;
+let maxPage = 7 // set to (lastPageNr - 1)
 
 // Define an async function to process each page
 async function processPage() {
@@ -67,10 +69,11 @@ async function processPage() {
 
         // Check if there's a change in content after clicking the next page button
         const previousContent = document.body.innerHTML;
-        const nextPageButton = document.querySelector('#id_418'); // Replace with the correct selector
-        if (nextPageButton) {
+        const nextPageButton = document.querySelector('#id_418'); // Replace with the correct selector for nextPageButton
+        if (nextPageButton && currPage < maxPage) {
             nextPageButton.click();
-            await new Promise(resolve => setTimeout(resolve, 3000)); // Wait for the next page to load (adjust timing as needed)
+            currPage++;
+            await new Promise(resolve => setTimeout(resolve, 1250)); // Wait for the next page to load (adjust timing as needed)
             const currentContent = document.body.innerHTML;
             if (previousContent === currentContent) {
                 console.log("End of pages reached.");
