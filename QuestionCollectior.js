@@ -27,7 +27,7 @@ function getTextFromId(id) {
     if (content) {
         for (let child of content.children) {
             if (child.innerText != '') {
-                 text += child.innerText.trim() + '\n' + '...' + '\n';
+                 text += child.innerText.trim() + '\n' + '$SEPERATOR$' + '\n';
             }
         }
     }
