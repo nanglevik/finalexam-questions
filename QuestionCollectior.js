@@ -99,7 +99,6 @@ async function processPage() {
             }
         } else {
             console.log("End of pages reached.");
-            accumulatedText += '$END$';
             // If there's no next page button, it means it's the last page
             // Generate the text file and open it
             const URLtext = makeTextFile(accumulatedText);
